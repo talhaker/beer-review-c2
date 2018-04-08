@@ -1,5 +1,12 @@
+let beers = [];
+
 let addBeer = function(name, category) {
-    alert('Adding beer ' + name + ' into categiry ' + category);
+    let beer = {
+        beerName: name,
+        beerCategory: category
+    }
+    beers.push(beer);
+    // alert('Adding beer ' + name + ' into categiry ' + category);
 }
 
 let postBeerHandler = function() {

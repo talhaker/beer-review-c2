@@ -1,9 +1,10 @@
 let beers = [];
 
-let addBeer = function(name, category) {
+let addBeer = function(name, category, rating) {
     let beer = {
         beerName: name,
-        beerCategory: category
+        beerCategory: category,
+        beerRating: rating
     }
     beers.push(beer);
     // alert('Adding beer ' + name + ' into categiry ' + category);
@@ -14,14 +15,15 @@ let renderBeers = function() {
     let beersList = $('.beers-list');
     beersList.empty();
     beers.forEach(function(beer) {
-        $("<li>" + beer.beerName + ", " + beer.beerCategory + "</li>").appendTo(beersList);
+        $("<li>" + beer.beerName + " (" + beer.beerCategory + "), rating: " + beer.beerRating + "</li>").appendTo(beersList);
     });
 }
 
 let postBeerHandler = function() {
     let name = $('.beer-input').val();
     let category = $('.category-input').val();
-    addBeer(name, category);
+    let rating = $('.rating-input option:selected').val();
+    addBeer(name, category, rating);
     renderBeers();
 }
 

@@ -32,13 +32,14 @@ $('.post-beer').click(postBeerHandler);
 
 
 let sortBeers = function() {
-    if (beersSorted) {
-        beers.reverse();
-    } else {
+    if (!beersSorted) {
         beers.sort(function(a, b) {
-            return (a.rating > b.rating) ? 1 : ((b.rating > a.rating) ? -1 : 0);
+            return (a.beerRating > b.beerRating) ? 1 : ((b.beerRating > a.beerRating) ? -1 : 0);
         });
+        debugger;
         beersSorted = true;
+    } else {
+        beers.reverse();
     }
 
     renderBeers();

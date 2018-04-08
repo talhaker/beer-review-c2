@@ -1,4 +1,5 @@
 let beers = [];
+let beersSorted = false;
 
 let addBeer = function(name, category, rating) {
     let beer = {
@@ -7,7 +8,7 @@ let addBeer = function(name, category, rating) {
         beerRating: rating
     }
     beers.push(beer);
-    // alert('Adding beer ' + name + ' into categiry ' + category);
+    beersSorted = false;
 }
 
 let renderBeers = function() {
@@ -28,3 +29,19 @@ let postBeerHandler = function() {
 }
 
 $('.post-beer').click(postBeerHandler);
+
+
+let sortBeers = function() {
+    if (beersSorted) {
+        beers.reverse();
+    } else {
+        beers.sort(function(a, b) {
+            return (a.rating > b.rating) ? 1 : ((b.rating > a.rating) ? -1 : 0);
+        });
+        beersSorted = true;
+    }
+
+    renderBeers();
+}
+
+$('.sort-beers').click(sortBeers);
